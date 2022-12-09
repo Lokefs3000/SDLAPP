@@ -1,3 +1,8 @@
+/*
+-- WARNING --
+Terrible code ahead, be carefull!
+*/
+
 var canvas = null
 var ctx = null
 
@@ -27,6 +32,7 @@ function deleteSelObj() {
         objects.splice(objects.indexOf(objectselect), 1)
         document.getElementById(objectselect.id).remove()
         objectselect = null
+        document.getElementById("content").innerHTML = document.getElementById("content").innerHTML.substring(4, document.getElementById("content").innerHTML.length);
     }
 }
 
@@ -37,6 +43,8 @@ function createImage() {
         y: 0,
         w: 100,
         h: 100,
+        sx: 1,
+        sy: 1,
         tex: null,
         name: "Item#" + objects.length,
         type: "image",
@@ -59,6 +67,8 @@ function createTexture() {
         y: 0,
         w: 0,
         h: 0,
+        sx: 1,
+        sy: 1,
         name: "Item#" + objects.length,
         img: null,
         type: "texture"
@@ -99,6 +109,8 @@ function createFont() {
         y: 0,
         w: 0,
         h: 0,
+        sx: 1,
+        sy: 1,
         name: "Item#" + objects.length,
         font: null,
         fontname: "",
@@ -114,10 +126,11 @@ function createFont() {
         const reader = new FileReader();
         reader.addEventListener('load', (event) => {
             console.log(event);
-            fff = new FontFace(file.name, "url(" + URL.createObjectURL(file) + ")").load().then(function(loaded_face) {
+            fff = new FontFace(file.name.replace(".ttf", ""), "url(" + URL.createObjectURL(file) + ")").load().then(function(loaded_face) {
                 n.font = loaded_face;
                 document.fonts.add(loaded_face)
-                n.fontname = file.name
+                n.fontname = file.name.replace(".ttf", "")
+                console.log(n.fontname, loaded_face);
             }).catch(function(error) {
                 console.error(error)
             });
@@ -142,6 +155,9 @@ function createText() {
         y: 0,
         w: 100,
         h: 100,
+        sx: 1,
+        sy: 1,
+        scale: 1,
         name: "Item#" + objects.length,
         type: "text",
         font: null,
@@ -177,16 +193,23 @@ function generateCode() {
         
         if (object.type == "image") {
             code += "IMAGE " + object.name + sn;
-            code += "POSITION " + object.x + " " + object.y + " 0" + sn;
+            code += "POSITION " + Math.round(object.x) + " " + Math.round(object.y) + " 0" + sn;
             if (object.tex != null)
                 code += "TEXTURE " + object.tex.name + sn;
-            code += "WIDTH " + object.w + sn;
-            code += "HEIGHT " + object.h + sn;
+            code += "WIDTH " + Math.round(object.w) + sn;
+            code += "HEIGHT " + Math.round(object.h) + sn;
             code += "END " + sn;
         }
     }
 
     return code.substring(0, code.length - 1);
+}
+
+function centerObj() {
+    if (objectselect != null) {
+        objectselect.x = canvas.width / 2 - objectselect.w / 2 * objectselect.sx
+        objectselect.y = canvas.height / 2 - objectselect.h / 2 * objectselect.sy
+    }
 }
 
 function withinBounds(x1, y1, w1, h1, x2, y2) {
@@ -249,7 +272,7 @@ function onLoad() {
             for (let index = 0; index < objects.length; index++) {
                 const object = objects[index];
 
-                if (withinBounds(object.x, object.y, object.w, object.h, mousex, mousey)) {
+                if (withinBounds(object.x, object.y, object.w * object.sx, object.h * objectselect.sy, mousex, mousey)) {
                     select(index);
                     break
                 }
@@ -311,6 +334,18 @@ function onLoad() {
         }
     })
 
+    document.getElementById("prop_sx").addEventListener("keyup", function(e) {
+        if (objectselect != null) {
+            objectselect.sx = document.getElementById("prop_sx").value;
+        }
+    })
+
+    document.getElementById("prop_sy").addEventListener("keyup", function(e) {
+        if (objectselect != null) {
+            objectselect.sy = document.getElementById("prop_sy").value;
+        }
+    })
+
     document.getElementById("prop_texture_path").addEventListener("keyup", function(e) {
         if (objectselect != null) {
             objectselect.path = document.getElementById("prop_texture_path").value;
@@ -329,6 +364,12 @@ function onLoad() {
         }
     })
 
+    document.getElementById("prop_text_scale").addEventListener("keyup", function(e) {
+        if (objectselect != null) {
+            objectselect.scale = document.getElementById("prop_text_scale").value;
+        }
+    })
+
     document.getElementById("prop_text_font").addEventListener("keyup", function(e) {
         if (objectselect != null) {
             for (let index = 0; index < objects.length; index++) {
@@ -344,6 +385,7 @@ function onLoad() {
 
     canvas.addEventListener("contextmenu", event => event.preventDefault());
 
+    ctx.imageSmoothingEnabled = false
     renderLoop();
 }
 
@@ -363,11 +405,9 @@ var mousexoffset, mouseyoffset = -1;
 function dataLoop() {
     if (objectselect != null) {
         var scale1 = withinBounds(objectselect.x - 3, objectselect.y - 3, 7, 7, mousex, mousey);
-        var scale2 = withinBounds(objectselect.x + objectselect.w - 3, objectselect.y - 3, 7, 7, mousex, mousey);
-        var scale3 = withinBounds(objectselect.x - 3, objectselect.y + objectselect.h - 3, 7, 7, mousex, mousey);
-        var scale4 = withinBounds(objectselect.x + objectselect.w - 3, objectselect.y + objectselect.h - 3, 7, 7, mousex, mousey);
-
-        console.log(scale1, scale2, scale3, scale4)
+        var scale2 = withinBounds(objectselect.x + objectselect.w * objectselect.sx - 3, objectselect.y - 3, 7, 7, mousex, mousey);
+        var scale3 = withinBounds(objectselect.x - 3, objectselect.y + objectselect.h * objectselect.sy - 3, 7, 7, mousex, mousey);
+        var scale4 = withinBounds(objectselect.x + objectselect.w * objectselect.sx - 3, objectselect.y + objectselect.h * objectselect.sy - 3, 7, 7, mousex, mousey);
 
         if (scale1 || scale2 || scale3 || scale4) {
             preventDeselect = true
@@ -443,7 +483,6 @@ function dataLoop() {
                 //objectselect.y = starty - (mousey - startmousey)
                 objectselect.h = starth + (mousey - startmousey)
             }
-            console.log(scaletype);
         }
     }
     if (scaling && !mousedown) {
@@ -451,6 +490,8 @@ function dataLoop() {
         scaletype = -1
     }
 }
+
+var errors = ""
 
 function renderLoop() {
     var date = new Date();
@@ -464,33 +505,51 @@ function renderLoop() {
         
         if (object.type == "image") {
             if (object.tex != null && object.tex.img != null) {
-                ctx.drawImage(object.tex.img, object.x, object.y, object.w, object.h);
+                try {
+                    ctx.drawImage(object.tex.img, object.x, object.y, object.w * object.sx, object.h * object.sy);
+                } catch (error) {
+                    console.log(error)
+                    errors += error + "\n"
+                }
             }
         }
         if (object.type == "text") {
             if (object.font != null && object.font.font != null) {
-                ctx.font = "26px " + object.font.fontname;
+                ctx.font = (26 * object.scale) + "px " + object.font.fontname;
                 ctx.fillStyle = "white";
-                ctx.fillText(object.text, object.x, object.y);
+                var split = object.text.split('\\');
+                var maxw = 0;
+                
+                for (let index = 0; index < split.length; index++) {
+                    const element = split[index];
+                    ctx.fillText(element, object.x, (object.y + 26 + (index * 26)) * object.scale);
+
+                    var calc = ctx.measureText(element)
+                    if (calc.width > maxw)
+                        maxw = calc.width * object.scale
+                }
+
+                object.w = maxw
+                object.h = (26 * split.length) * object.scale
             }
         }
     }
 
     if (objectselect != null) {
         ctx.strokeStyle = "#002389";
-        ctx.strokeRect(objectselect.x, objectselect.y, objectselect.w, objectselect.h);
+        ctx.strokeRect(objectselect.x, objectselect.y, objectselect.w * objectselect.sx, objectselect.h * objectselect.sy);
         ctx.fillStyle = "#0023F7";
         ctx.beginPath();
         ctx.arc(objectselect.x, objectselect.y, 4, 0, 2 * Math.PI);
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(objectselect.x + objectselect.w, objectselect.y, 4, 0, 2 * Math.PI);
+        ctx.arc(objectselect.x + objectselect.w * objectselect.sx, objectselect.y, 4, 0, 2 * Math.PI);
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(objectselect.x, objectselect.y + objectselect.h, 4, 0, 2 * Math.PI);
+        ctx.arc(objectselect.x, objectselect.y + objectselect.h * objectselect.sy, 4, 0, 2 * Math.PI);
         ctx.fill();
         ctx.beginPath();
-        ctx.arc(objectselect.x + objectselect.w, objectselect.y + objectselect.h, 4, 0, 2 * Math.PI);
+        ctx.arc(objectselect.x + objectselect.w * objectselect.sx, objectselect.y + objectselect.h * objectselect.sy, 4, 0, 2 * Math.PI);
         ctx.fill();
     }
 
@@ -500,6 +559,7 @@ function renderLoop() {
     document.getElementById("stats").innerHTML = "FPS: " + Math.round(1 / delta)
 
     document.getElementById("code").textContent = generateCode();
+    document.getElementById("errorlist").textContent = "ERROR LIST THIS FRAME" + "\n" + errors
 
     setTimeout(renderLoop, (1 / fpsTarget * 1000))
 }
