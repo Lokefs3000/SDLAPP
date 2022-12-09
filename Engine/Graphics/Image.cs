@@ -19,10 +19,12 @@ namespace LonelyHill.Graphics
 
         public Texture texture;
         public Transform transform = new Transform();
+        private Transform innerTrans = new Transform();
         public Vector4 Color = new Vector4(255.0f, 255.0f, 255.0f, 255.0f);
 
         public bool CenterAligned = false;
         public bool Autoscale = false;
+        public bool AutoPosition = false;
 
         public Vector2 Offset = new Vector2(0, 0);
 
@@ -50,6 +52,10 @@ namespace LonelyHill.Graphics
                 IsHovered = (x && y);
             }
 
+            innerTrans.Position = transform.Position;
+            innerTrans.Rotation = transform.Rotation;
+            innerTrans.Scale = transform.Scale;
+
             if (Autoscale)
             {
                 float scale = Engine.Instance.GetScaleAspect();
@@ -66,14 +72,32 @@ namespace LonelyHill.Graphics
                    (size.y / 2.0f) - (height * transform.Scale.y / 2.0f),
                    0.0f);
             }
+
+            if (AutoPosition)
+            {
+                Vector2 size = Engine.Instance.GetScaleVector();
+                innerTrans.Position *= new Vector3(
+                    size.x,
+                    size.y,
+                    0.0f
+                    );
+            }
+
+            if (texture != null)
+            {
+                if (Width != texture.textureSurface.w || Height != texture.textureSurface.h)
+                {
+                    SetTexture();
+                }
+            }
         }
 
         public override void Render()
         {
             if (texture != null)
             {
-                var src = transform.ToRectSrc(texture.textureSurface.w, texture.textureSurface.h);
-                var dest = transform.ToRectDest(width, height);
+                var src = innerTrans.ToRectSrc(texture.textureSurface.w, texture.textureSurface.h);
+                var dest = innerTrans.ToRectDest(width, height);
 
                 dest.x += (int)Offset.x;
                 dest.y += (int)Offset.y;

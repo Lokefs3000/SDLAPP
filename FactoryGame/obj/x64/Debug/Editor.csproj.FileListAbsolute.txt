@@ -1,0 +1,16 @@
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\Editor.exe.config
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\Editor.exe
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\Editor.pdb
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\SDL2-CS.dll
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\Editor\bin\x64\Debug\SDL2-CS.dll.config
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.csproj.AssemblyReference.cache
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.csproj.SuggestedBindingRedirects.cache
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.csproj.CoreCompileInputs.cache
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.csproj.CopyComplete
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.exe
+C:\Users\Loke\source\repos\SDLAPP\Editor\obj\x64\Debug\Editor.pdb
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Editor.exe.config
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Editor.exe
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Editor.pdb

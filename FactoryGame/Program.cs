@@ -8,7 +8,6 @@ using LonelyHill.UI;
 using LonelyHill.Utlity;
 using SDL2;
 using System;
-using System.Diagnostics;
 using System.IO;
 
 /*
@@ -52,6 +51,33 @@ namespace FactoryGame
 
         public static Audio bgMusic;
 
+        public static void lua_setLoc(string loc)
+        {
+            switch (loc)
+            {
+                case "introduction":
+                    location = Location.Introduction;
+                    break;
+                case "menu":
+                    location = Location.Menu;
+                    break;
+                case "newgame":
+                    location = Location.NewGame;
+                    break;
+                case "loading":
+                    location = Location.Loading;
+                    break;
+                case "unkown":
+                    location = Location.Unkown;
+                    break;
+                default:
+                    location = Location.Unkown;
+                    break;
+            }
+
+            Engine.logger.info("Moving location to:", location.ToString());
+        }
+
         static void Main(string[] args)
         {
             string r = File.ReadAllText(FileSystem.GetSource() + "/gamever");
@@ -62,7 +88,7 @@ namespace FactoryGame
 
             font = new Font(FileSystem.GetSource() + "/content/font/orange_kid.ttf");
 
-            location = Location.Introduction;
+            location = Location.Menu;
 
             pixel = new Texture(FileSystem.GetSource() + "/content/ui/pixel.png");
             gray_button = new Texture(FileSystem.GetSource() + "/content/ui/gray_button.png");
@@ -79,61 +105,44 @@ namespace FactoryGame
             bgMusic = new Audio(FileSystem.GetSource() + "/content/sound/menu_bg_temp.wav");
             bgMusic.ChangeVolume(50.0f);
 
-            Script entrypoint = engine.scripting.CreateScript(FileSystem.GetSource() + "/content/script/entrypoint.lua");
-            entrypoint.Call();
-            entrypoint.Cleanup();
+            engine.scripting.SetGlobal("SetLocation", new Action<string>(lua_setLoc));
+
+            //Script entrypoint = engine.scripting.CreateScript(FileSystem.GetSource() + "/content/script/entrypoint.lua");
+            //entrypoint.Call();
+
+            Text text = new Text();
+            text.font = font;
+            text.text = "LOADING";
+            engine.rendererClass.Renderables.Add(text);
+
+            ConsoleReader reader = new ConsoleReader();
 
             while (IsRunning)
             {
                 PolledEvent ev = engine.GetEvents();
                 if (ev.sdlEvent.type == SDL.SDL_EventType.SDL_QUIT) IsRunning = false;
 
+                text.text = "CPU: x" + Environment.ProcessorCount + "\\OS: " + Environment.OSVersion.VersionString + "\\Build: " + Environment.Version.Build + "\\Machine Name: " + Environment.MachineName;
+
                 SDL.SDL_RenderClear(Engine.Instance.renderer);
 
                 switch (location)
                 {
                     case Location.Unkown:
-                        mainMenu.Cleanup();
-                        newGame.Cleanup();
-                        StopMusicIfRun(bgMusic, true, 700);
-                        //Location is unkown
                         break;
                     case Location.Introduction:
                         introduction.IntroductionPrimary();
-                        mainMenu.Cleanup();
-                        newGame.Cleanup();
-                        loadingScreen.RemoveFromList();
-                        StopMusicIfRun(bgMusic, true, 700);
                         break;
                     case Location.Menu:
-                        mainMenu.Primary();
-                        newGame.Cleanup();
-                        loadingScreen.RemoveFromList();
-                        CheckMusicBGRunning(bgMusic, true, true, 1000);
                         break;
                     case Location.NewGame:
-                        newGame.Primary();
-                        mainMenu.Cleanup();
-                        loadingScreen.RemoveFromList();
-                        CheckMusicBGRunning(bgMusic, true, true, 1000);
+                        
                         break;
                     case Location.Loading:
-                        mainMenu.Cleanup();
-                        newGame.Cleanup();
-                        loadingScreen.Primary();
-                        CheckMusicBGRunning(bgMusic, true, true, 1000);
                         break;
                     case Location.Overworld:
-                        mainMenu.Cleanup();
-                        newGame.Cleanup();
-                        loadingScreen.RemoveFromList();
-                        StopMusicIfRun(bgMusic, true, 700);
                         break;
                     default:
-                        mainMenu.Cleanup();
-                        newGame.Cleanup();
-                        loadingScreen.RemoveFromList();
-                        StopMusicIfRun(bgMusic, true, 700);
                         Engine.logger.warn("Location error!");
                         break;
                 }
@@ -146,6 +155,8 @@ namespace FactoryGame
                 SDL.SDL_RenderPresent(Engine.Instance.renderer);
                 engine.UpdateEngine(ev.sdlEvent);
             }
+
+            reader.End();
 
             font.Cleanup();
             mainMenu.Cleanup();

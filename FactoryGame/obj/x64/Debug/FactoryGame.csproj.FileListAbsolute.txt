@@ -1,0 +1,12 @@
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.AssemblyReference.cache
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.SuggestedBindingRedirects.cache
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.CoreCompileInputs.cache
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\FactoryGame.exe.config
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\FactoryGame.exe
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\FactoryGame.pdb
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.CopyComplete
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.exe
+C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.pdb
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\lua54.dll
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.dylib
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.so

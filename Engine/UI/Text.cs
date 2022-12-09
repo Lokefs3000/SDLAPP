@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,9 +50,16 @@ namespace LonelyHill.UI
             {
                 SDL_ttf.TTF_SizeText(font.font, text, out TotalWidth, out TotalHeight);
                 int x = 0;
+                int y = 0;
 
                 for (int i = 0; i < text.Length; i++)
                 {
+                    if (text[i] == '\\')
+                    {
+                        y += TotalHeight - 8;
+                        x = 0;
+                        continue;
+                    }
                     if (font.glyphRects.ContainsKey(text[i]))
                     {
                         var src = transform.ToRectSrc(font.glyphRects[text[i]].w * Scale, font.glyphRects[text[i]].h * Scale);
@@ -67,6 +75,7 @@ namespace LonelyHill.UI
                         }
 
                         dest.x += x;
+                        dest.y += y;
 
                         x += (int)(font.glyphRects[text[i]].w * Scale);
 

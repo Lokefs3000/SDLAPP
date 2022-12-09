@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleReader.cs" />
     <Compile Include="Introduction.cs" />
     <Compile Include="Menu\LoadingScreen.cs" />
     <Compile Include="Menu\NewGame.cs" />

@@ -17,6 +17,16 @@ namespace LonelyHill.Layout
             return layout;
         }
 
+        public void Reload()
+        {
+            for (int i = 0; i < Layouts.Count; i++)
+            {
+                string path = Layouts[i].GetPath();
+                Layouts[i].Cleanup();
+                Layouts[i] = new UILayout(path);
+            }
+        }
+
         public void Cleanup()
         {
             for (int i = 0; i < Layouts.Count; i++)

@@ -1,0 +1,40 @@
+TEXTURE lokefs3000Texture
+PATH content/logo/lokefs3000.png
+END 
+TEXTURE lonelyhillengTexture
+PATH content/logo/lonelyhilleng.png
+END 
+TEXTURE luaicon
+PATH content/logo/lua.png
+END 
+TEXTURE sdlicon
+PATH content/logo/sdlicon.png
+END 
+IMAGE lokefs3000Image
+AUTOSCALE true
+AUTOPOSITION true
+TEXTURE lokefs3000Texture
+SCALE 4 4 4
+POSITION 80 150 0
+END 
+IMAGE lonelyhillengImage
+AUTOSCALE true
+AUTOPOSITION true
+TEXTURE lonelyhillengTexture
+SCALE 4 4 4
+POSITION 80 460 0
+END 
+IMAGE luaImage
+AUTOSCALE true
+AUTOPOSITION true
+TEXTURE luaicon
+SCALE 4 4 4
+POSITION 560 80 0
+END 
+IMAGE sdlImage
+AUTOSCALE true
+AUTOPOSITION true
+TEXTURE sdlicon
+SCALE 4 4 4
+POSITION 560 460 0
+END 

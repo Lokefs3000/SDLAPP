@@ -1,0 +1,9 @@
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\Debug\Engine.csproj.AssemblyReference.cache
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\Debug\Engine.csproj.CopyComplete

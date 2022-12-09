@@ -1,0 +1,9 @@
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\SDLAPP.exe.config
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\SDLAPP.exe
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\SDLAPP.pdb
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.csproj.AssemblyReference.cache
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.csproj.SuggestedBindingRedirects.cache
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.csproj.CoreCompileInputs.cache
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.csproj.CopyComplete
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.exe
+C:\Users\Loke\source\repos\SDLAPP\SDLAPP\obj\x64\Debug\SDLAPP.pdb

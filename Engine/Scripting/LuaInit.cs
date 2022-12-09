@@ -49,6 +49,11 @@ namespace LonelyHill.Scripting
             state.UseTraceback = true;
         }
 
+        public void SetGlobal(string key, Action<string> action)
+        {
+            state[key] = action;
+        }
+
         public Lua GetState()
         {
             return state;
@@ -83,26 +88,6 @@ namespace LonelyHill.Scripting
         public string getContent()
         {
             return FileSystem.GetSource() + "/content/";
-        }
-
-        public void logger_info(string msg)
-        {
-            Engine.logger.info(msg.ToString());
-        }
-
-        public void logger_warn(string msg)
-        {
-            Engine.logger.warn(msg);
-        }
-
-        public void logger_error(string msg)
-        {
-            Engine.logger.error(msg);
-        }
-
-        public void logger_fatal(string msg)
-        {
-            Engine.logger.fatal(msg);
         }
     }
 }

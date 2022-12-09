@@ -1,0 +1,14 @@
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\x64\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\x64\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\x64\Debug\SDL2-CS.dll
+C:\Users\Loke\source\repos\SDLAPP\Engine\bin\x64\Debug\SDL2-CS.dll.config
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.AssemblyReference.cache
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.CopyComplete
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\x64\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\Engine\obj\x64\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Engine.dll
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Engine.pdb
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\lua54.dll
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.dylib
+C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.so
