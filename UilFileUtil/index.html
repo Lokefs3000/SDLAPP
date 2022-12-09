@@ -29,12 +29,20 @@
             <input id="prop_x" type="number" placeholder="X" style="width: 100px;">
             <input id="prop_y" type="number" placeholder="Y" style="width: 100px;">
             <input id="prop_w" type="number" placeholder="Width" style="width: 100px;">
+            <button id="prop_delete" onclick="deleteSelObj()">Delete</button>
             <input id="prop_h" type="number" placeholder="Height" style="width: 100px;"><br>
             <div id="image_prop">
                 <input id="prop_image_tex" type="text" placeholder="Texture">
             </div>
             <div id="texture_prop">
                 <input id="prop_texture_path" type="text" placeholder="Path">
+            </div>
+            <div id="font_prop">
+                <input id="prop_font_path" type="text" placeholder="Path">
+            </div>
+            <div id="text_prop">
+                <input id="prop_text_text" type="text" placeholder="Text">
+                <input id="prop_text_font" type="text" placeholder="Font">
             </div>
         </span>
     </div>
@@ -44,7 +52,9 @@
     <p>Target FPS: <input type="range" min="30" max="60" value="60" step="1" id="fpstarget"></p>
     <div style="width: fit-content; height: fit-content; background-color: gray; border: white 2px solid; position: absolute;" id="rightclick_menu">
         <button style="margin: 3px; width: calc(100% - 6px);" id="image_add" onclick="createImage();">Image</button><br>
-        <button style="margin: 3px; width: calc(100% - 6px);" id="image_add" onclick="createTexture();">Texture</button>
+        <button style="margin: 3px; width: calc(100% - 6px);" id="image_add" onclick="createTexture();">Texture</button><br>
+        <button style="margin: 3px; width: calc(100% - 6px);" id="font_add" onclick="createFont();">Font</button>
+        <button style="margin: 3px; width: calc(100% - 6px);" id="font_add" onclick="createText();">Text</button>
     </div>
     <textarea id="code">
         WAITING

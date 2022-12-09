@@ -12,3 +12,13 @@ C:\Users\Loke\source\repos\SDLAPP\bin\Debug\Engine.pdb
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\lua54.dll
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.dylib
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.so
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\lua54.dll
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\liblua54.dylib
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\liblua54.so
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\Engine.dll
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\Engine.pdb
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.AssemblyReference.cache
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\Engine\obj\x64\Debug\Engine.csproj.CopyComplete
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\Engine\obj\x64\Debug\Engine.dll
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\Engine\obj\x64\Debug\Engine.pdb

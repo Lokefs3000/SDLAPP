@@ -10,3 +10,15 @@ C:\Users\Loke\source\repos\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.pdb
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\lua54.dll
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.dylib
 C:\Users\Loke\source\repos\SDLAPP\bin\Debug\liblua54.so
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\FactoryGame.exe.config
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\FactoryGame.exe
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\FactoryGame.pdb
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.AssemblyReference.cache
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.SuggestedBindingRedirects.cache
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.CoreCompileInputs.cache
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.csproj.CopyComplete
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.exe
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\FactoryGame\obj\x64\Debug\FactoryGame.pdb
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\lua54.dll
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\liblua54.dylib
+C:\Users\lokef\source\repos\Lokefs3000\SDLAPP\bin\Debug\liblua54.so

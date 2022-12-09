@@ -22,6 +22,8 @@ namespace FactoryGame
                 animationScript = Program.GetEngine().scripting.CreateScript(FileSystem.GetSource() + "/content/script/ui/introduction.lua");
                 animationScript.Call();
 
+                Console.WriteLine("called");
+
                 IsPlaying = true;
             }
         }

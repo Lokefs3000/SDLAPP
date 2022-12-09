@@ -9,13 +9,11 @@ using LonelyHill.Utlity;
 using SDL2;
 using System;
 using System.IO;
+using System.Linq;
 
 /*
 TODO
-Lua,
-CustomFPS,
-9SliceRewrite,
-TextHoverRewrite,
+Engine revision 2
 ...
 */
 
@@ -88,7 +86,7 @@ namespace FactoryGame
 
             font = new Font(FileSystem.GetSource() + "/content/font/orange_kid.ttf");
 
-            location = Location.Menu;
+            location = Location.Introduction;
 
             pixel = new Texture(FileSystem.GetSource() + "/content/ui/pixel.png");
             gray_button = new Texture(FileSystem.GetSource() + "/content/ui/gray_button.png");
@@ -102,8 +100,10 @@ namespace FactoryGame
 
             buttonHoverAudio = new Audio(FileSystem.GetSource() + "/content/sound/button_hover.wav");
             buttonPressAudio = new Audio(FileSystem.GetSource() + "/content/sound/button_press.wav");
-            bgMusic = new Audio(FileSystem.GetSource() + "/content/sound/menu_bg_temp.wav");
+            bgMusic = new   Audio(FileSystem.GetSource() + "/content/sound/menu_bg_temp.wav");
             bgMusic.ChangeVolume(50.0f);
+
+            Console.WriteLine(font.glyphRects.Values.ElementAt(0).h);
 
             engine.scripting.SetGlobal("SetLocation", new Action<string>(lua_setLoc));
 
@@ -115,7 +115,7 @@ namespace FactoryGame
             text.text = "LOADING";
             engine.rendererClass.Renderables.Add(text);
 
-            ConsoleReader reader = new ConsoleReader();
+            //ConsoleReader reader = new ConsoleReader();
 
             while (IsRunning)
             {
@@ -156,7 +156,7 @@ namespace FactoryGame
                 engine.UpdateEngine(ev.sdlEvent);
             }
 
-            reader.End();
+            //reader.End();
 
             font.Cleanup();
             mainMenu.Cleanup();
